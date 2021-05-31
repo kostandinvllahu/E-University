@@ -301,6 +301,8 @@ public Statement st;
             String sql = "DELETE  FROM encrollcourse WHERE CID='"+CID+"' AND Username='"+Name+"'";
              PreparedStatement prp = cn.prepareStatement(sql);
               JOptionPane.showMessageDialog(null, "YOU SUCCESFULLY DROPED FROM THE CLASS");
+              jtxtCID.setText("");
+              jtxtClass.setText("");
           prp.execute(sql);
           DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
       tbModel.setRowCount(0);
@@ -311,7 +313,8 @@ public Statement st;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+              jtxtCID.setText("");
+              jtxtClass.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

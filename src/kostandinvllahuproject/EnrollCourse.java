@@ -353,6 +353,8 @@ public Connection cn;
         
           prp.execute(sql);
           JOptionPane.showMessageDialog(null, "YOU SUCCESFULLY ENROLLED IN THE CLASS");
+          jtxtClsID.setText("");
+          jtxtClsName.setText("");
          }catch(Exception e){
                 System.out.println(e.getMessage());
             }

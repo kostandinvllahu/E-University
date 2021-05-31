@@ -290,6 +290,7 @@ public Statement st;
              tbModel.setRowCount(0);
              data();
              JOptionPane.showMessageDialog(null, "Comment uploaded");
+             jtxtComment.setText("");
         }catch (SQLException e){
             //JOptionPane.showMessageDialog(null, e);
              System.out.println(e);
