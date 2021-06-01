@@ -42,6 +42,7 @@ public Statement st;
         rname.setText(ruser);
         user();
         data();
+        showdata();
     }
     
     void username(String user){
@@ -61,6 +62,8 @@ public Statement st;
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         rname = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        ename1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
@@ -70,6 +73,13 @@ public Statement st;
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtxtUsername = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtxtID = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtxtClass = new javax.swing.JTextPane();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,18 +104,32 @@ public Statement st;
         rname.setForeground(new java.awt.Color(255, 255, 255));
         rname.setText("jLabel1");
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("MAJOR :");
+
+        ename1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        ename1.setForeground(new java.awt.Color(255, 255, 255));
+        ename1.setText("#");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rname)
-                .addGap(268, 268, 268)
-                .addComponent(jLabel2)
-                .addContainerGap(520, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rname)
+                        .addGap(354, 354, 354)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ename1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,22 +139,26 @@ public Statement st;
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addComponent(rname))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(ename1))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Student", "Comment"
+                "Student", "Comment", "Class"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -174,29 +202,86 @@ public Statement st;
 
         jScrollPane3.setViewportView(jtxtUsername);
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID", "Class"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        jTable2.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTable2AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane4.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jScrollPane5.setViewportView(jtxtID);
+
+        jScrollPane6.setViewportView(jtxtClass);
+
+        jButton3.setText("Verify");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)))
-                        .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3))
-                        .addGap(77, 77, 77)
-                        .addComponent(jScrollPane1)))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -204,20 +289,26 @@ public Statement st;
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -237,12 +328,136 @@ public Statement st;
         this.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void classes(){
+         String ID = jtxtID.getText().toString();
+         String select = ename1.getText();
+        if(select.equals("CS")){
+        try{
+         String sql = "SELECT Class FROM " + select +" WHERE ID='"+ID+"'";
+         ResultSet rs = st.executeQuery(sql);
+         while(rs.next()){
+            
+             String Class = rs.getString("Class");
+             jtxtClass.setText(Class);
+             
+          
+             
+         }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            //    JOptionPane.showMessageDialog(null, "You are already enrolled in this class " + ID);
+            //    JOptionPane.showMessageDialog(null, "You are already enrolled in this class" + ID + );
+            }
+        }else if(select.equals("BE")){
+            try{
+          String sql = "SELECT Class FROM " +select +" WHERE ID='"+ID+"'";
+         ResultSet rs = st.executeQuery(sql);
+         while(rs.next()){
+             String Class = rs.getString("Class");
+             jtxtClass.setText(Class);
+            
+             
+         }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }else if(select.equals("PY")){
+            try{
+         String sql = "SELECT Class FROM " +select +" WHERE ID='"+ID+"'";
+         ResultSet rs = st.executeQuery(sql);
+         while(rs.next()){
+             String Class = rs.getString("Class");
+        
+               jtxtClass.setText(Class);
+         
+             
+         }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+       private void showdata(){
+          String temp = rname.getText().toString();
+        try{
+             String sql = "SELECT Degree FROM Login WHERE ID='"+temp+"'";
+              ResultSet rss = st.executeQuery(sql);
+             if(rss.next()){
+                 String Degree = rss.getString("Degree");
+                 ename1.setText(Degree);
+                 
+             }
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+        String select = ename1.getText().toString();
+        if(select.equals("CS")){
+        try{
+         String sql = "SELECT ID, Class FROM " + select +"";
+         ResultSet rs = st.executeQuery(sql);
+         while(rs.next()){
+             String ID = rs.getString("ID");
+             String Class = rs.getString("Class");
+             //String Students = rs.getString("Students");
+             String tbData[] = {ID,Class};
+             DefaultTableModel tbModel = (DefaultTableModel)jTable2.getModel();
+             tbModel.addRow(tbData);
+             //jtxtClasses.setText("");
+             
+         }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }else if(select.equals("BE")){
+            try{
+       String sql = "SELECT ID, Class FROM " + select +"";
+         ResultSet rs = st.executeQuery(sql);
+         while(rs.next()){
+             String ID = rs.getString("ID");
+             String Class = rs.getString("Class");
+             //String Students = rs.getString("Students");
+             String tbData[] = {ID,Class};
+             DefaultTableModel tbModel = (DefaultTableModel)jTable2.getModel();
+             tbModel.addRow(tbData);
+             //jtxtClasses.setText("");
+             
+         }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }else if(select.equals("PY")){
+            try{
+         String sql = "SELECT ID, Class FROM " + select +"";
+         ResultSet rs = st.executeQuery(sql);
+         while(rs.next()){
+             String ID = rs.getString("ID");
+             String Class = rs.getString("Class");
+           // String Students = rs.getString("Students");
+             String tbData[] = {ID,Class};
+             DefaultTableModel tbModel = (DefaultTableModel)jTable2.getModel();
+             tbModel.addRow(tbData);
+             //jtxtClasses.setText("");
+             
+         }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+        
+    }
+    
+    
     private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1AncestorAdded
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jtxtComment.setText("");
+             jtxtID.setText("");
+             jtxtClass.setText("");
+             jtxtComment.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void user(){
@@ -254,6 +469,7 @@ public Statement st;
              String ID = rs.getString("Username");
              jtxtUsername.setText(ID);
              jtxtUsername.setEditable(false);
+             jtxtClass.setEditable(false);
          }
             }catch(Exception e){
                 System.out.println(e.getMessage());
@@ -262,13 +478,13 @@ public Statement st;
     
     public void data(){
          try{
-         String sql = "SELECT username, comment FROM comments";
+         String sql = "SELECT username, comment,class FROM comments";
          ResultSet rs = st.executeQuery(sql);
          while(rs.next()){
-             //String ID = rs.getString("ID");
-             String Class = rs.getString("username");
-             String Day = rs.getString("comment");
-             String tbData[] = {Class,Day};
+             String Class  = rs.getString("class");
+             String Username = rs.getString("username");
+             String Comment = rs.getString("comment");
+             String tbData[] = {Username,Comment,Class};
              DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
              tbModel.addRow(tbData);
          }
@@ -280,22 +496,33 @@ public Statement st;
     
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
        String Comment = jtxtComment.getText().toString();
-       String ID = rname.getText().toString();
+       String Class = jtxtClass.getText().toString();
        String Username = jtxtUsername.getText().toString();
          try{
-             String sql = "INSERT INTO comments(username, comment) VALUES('"+Username+"','"+Comment+"')";
+             String sql = "INSERT INTO comments(username, comment,class) VALUES('"+Username+"','"+Comment+"','"+Class+"')";
               PreparedStatement ps = cn.prepareStatement(sql);
               ps.executeUpdate();
              DefaultTableModel tbModel = (DefaultTableModel)jTable1.getModel();
              tbModel.setRowCount(0);
              data();
              JOptionPane.showMessageDialog(null, "Comment uploaded");
+             jtxtID.setText("");
+             jtxtClass.setText("");
              jtxtComment.setText("");
         }catch (SQLException e){
             //JOptionPane.showMessageDialog(null, e);
              System.out.println(e);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void jTable2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable2AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2AncestorAdded
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+   classes();    
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,17 +561,26 @@ public Statement st;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JLabel ename1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextPane jtxtClass;
     private javax.swing.JTextPane jtxtComment;
+    private javax.swing.JTextPane jtxtID;
     private javax.swing.JTextPane jtxtUsername;
     private javax.swing.JLabel rname;
     // End of variables declaration//GEN-END:variables
