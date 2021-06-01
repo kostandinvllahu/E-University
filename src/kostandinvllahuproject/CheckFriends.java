@@ -387,7 +387,7 @@ public Statement st;
           jtxtStdUsername.setText("");
      }else{
        try{
-             String sql = "SELECT Username FROM Login WHERE ID='"+temp+"'";
+             String sql = "SELECT Username FROM addfriends WHERE FriendID='"+temp+"'";
               ResultSet rss = st.executeQuery(sql);
              if(rss.next()){
                   String Username = rss.getString("Username");
