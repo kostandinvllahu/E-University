@@ -331,6 +331,9 @@ public Statement st;
     private void classes(){
          String ID = jtxtID.getText().toString();
          String select = ename1.getText();
+         if(select.equals("")){
+             JOptionPane.showMessageDialog(null,"Please insert ID first");
+         }else{
         if(select.equals("CS")){
         try{
          String sql = "SELECT Class FROM " + select +" WHERE ID='"+ID+"'";
@@ -376,6 +379,7 @@ public Statement st;
                 System.out.println(e.getMessage());
             }
         }
+      }
     }
     
        private void showdata(){
@@ -495,7 +499,15 @@ public Statement st;
     
     
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-       String Comment = jtxtComment.getText().toString();
+       String comment = jtxtComment.getText().trim();
+       String verify =  jtxtClass.getText().trim();
+        if(comment.equals("") || verify.equals("")){
+            JOptionPane.showMessageDialog(null, "Select a class and add a comment");
+            jtxtID.setText("");
+             jtxtClass.setText("");
+             jtxtComment.setText("");
+        }else{
+        String Comment = jtxtComment.getText().toString();
        String Class = jtxtClass.getText().toString();
        String Username = jtxtUsername.getText().toString();
          try{
@@ -513,6 +525,7 @@ public Statement st;
             //JOptionPane.showMessageDialog(null, e);
              System.out.println(e);
         }
+      }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void jTable2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable2AncestorAdded

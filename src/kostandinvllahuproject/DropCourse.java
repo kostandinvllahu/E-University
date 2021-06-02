@@ -297,6 +297,11 @@ public Statement st;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
   String CID = jtxtCID.getText();
         String Name = jtxtUsername.getText().toString();
+        if(CID.equals("") || Name.equals("")){
+            JOptionPane.showMessageDialog(null,"Please select a class first");
+            jtxtCID.setText("");
+            jtxtClass.setText("");
+        }else{
         try{
             String sql = "DELETE  FROM encrollcourse WHERE CID='"+CID+"' AND Username='"+Name+"'";
              PreparedStatement prp = cn.prepareStatement(sql);
@@ -311,7 +316,7 @@ public Statement st;
         System.out.println(e);
     }       
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
               jtxtCID.setText("");
               jtxtClass.setText("");

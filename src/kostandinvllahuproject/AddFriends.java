@@ -273,6 +273,9 @@ public Statement st;
          jtxtStdID.setText("");
           jtxtStdUsername.setText("");
      }else{
+         if(temp.equals("")){
+             JOptionPane.showMessageDialog(null,"Please enter ID first");
+         }else{
        try{
              String sql = "SELECT Username FROM Login WHERE ID='"+temp+"'";
               ResultSet rss = st.executeQuery(sql);
@@ -283,6 +286,7 @@ public Statement st;
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
+       }
      }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -292,6 +296,11 @@ public Statement st;
       String ID = jtxtStdID.getText().toString();
         String Name = jtxtStdUsername.getText().toString();
         String PublicID = aname.getText();
+        if(ID.equals("") || Name.equals("")){
+            JOptionPane.showMessageDialog(null,"Please select a user first");
+          jtxtStdID.setText("");
+          jtxtStdUsername.setText("");
+        }else{
           try{
        String sql = "INSERT INTO addfriends VALUES('"+PublicID+"','"+ID+"','"+Name+"')";
         PreparedStatement prp = cn.prepareStatement(sql);
@@ -306,6 +315,7 @@ public Statement st;
          }catch(Exception e){
                 System.out.println(e.getMessage());
             }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

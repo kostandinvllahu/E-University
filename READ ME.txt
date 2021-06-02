@@ -1,0 +1,4 @@
+Import UNIVERSITY.SQL in XAMPP for user to login
+
+Username: 1234
+Password: 1234

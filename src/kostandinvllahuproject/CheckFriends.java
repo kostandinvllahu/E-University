@@ -316,7 +316,10 @@ public Statement st;
   private void selection(){
                String CID = cname.getText();
      String FriendID = jtxtStdID.getText().toString();
-        String Name = jtxtStdUsername.getText().toString();
+      //  String Name = jtxtStdUsername.getText().toString();
+        if(FriendID.equals("")){
+            JOptionPane.showMessageDialog(null,"Please select a friend first");
+        }else{
         try{
             String sql = "DELETE  FROM addfriends WHERE FriendID='"+FriendID+"' AND PublicID='"+CID+"'";
              PreparedStatement prp = cn.prepareStatement(sql);
@@ -330,12 +333,15 @@ public Statement st;
         }catch(Exception e){
         System.out.println(e);
     }       
-   
+   }
   }
     
     private void classes(){
        
             String ID = jtxtStdUsername.getText().toString();
+            if(ID.equals("")){
+                JOptionPane.showMessageDialog(null,"Please insert ID for data to be fetched");
+            }
         try{
             String sql = "SELECT Class FROM encrollcourse WHERE Username='"+ID+"'";
             ResultSet rs = st.executeQuery(sql);
@@ -347,7 +353,7 @@ public Statement st;
              tbModel.addRow(tbData);
          }
         }catch(Exception e){
-        System.out.println(e);
+       JOptionPane.showMessageDialog(null,e);
         }
     }
     
@@ -368,7 +374,7 @@ public Statement st;
              tbModel.addRow(tbData);
          }
     }catch(Exception e){
-        System.out.println(e);
+        JOptionPane.showMessageDialog(null,e);
     }
     }
     
@@ -381,6 +387,9 @@ public Statement st;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String temp = jtxtStdID.getText().toString();
      String PublicID = cname.getText();
+     if(temp.equals("")){
+         JOptionPane.showMessageDialog(null, "Please an ID first");
+     }
      if(temp.equals(PublicID)){
          JOptionPane.showMessageDialog(null, "You cant insert your ID"); 
          jtxtStdID.setText("");

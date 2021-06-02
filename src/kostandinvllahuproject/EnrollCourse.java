@@ -340,10 +340,15 @@ public Connection cn;
     }
     
     
-     public void enroll() {
+     private void enroll() { 
          String ID = jtxtClsID.getText().toString();
          String Username = jtxtStdName.getText().toString();
          String Class  = jtxtClsName.getText().toString();
+         if(ID.equals("") || Username.equals("")){
+             JOptionPane.showMessageDialog(null, "Please choose a class first");
+          jtxtClsID.setText("");
+          jtxtClsName.setText("");
+         }else{
          try{
        String sql = "INSERT INTO encrollcourse VALUES('"+ID+"','"+Class+"','"+Username+"')";
         PreparedStatement prp = cn.prepareStatement(sql);
@@ -358,6 +363,7 @@ public Connection cn;
          }catch(Exception e){
                 System.out.println(e.getMessage());
             }
+         }
      }
     
     private void showdata(){
